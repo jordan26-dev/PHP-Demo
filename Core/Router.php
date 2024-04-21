@@ -70,7 +70,10 @@ class Router {
         abort();
     }
 
-
+    public function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
    
 
 }
