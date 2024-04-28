@@ -3,6 +3,7 @@
 
 use Core\Response;
 use Core\Session;
+use Core\Router;
 
 function dd($value)
 {
@@ -23,7 +24,7 @@ function authorize($value, $response = Response::FORBIDDEN)
 {
     if(! $value)
     {
-        abort($response);
+        (new Router)->abort($response);
     }
 }
 
@@ -37,15 +38,6 @@ function view($path, $attributes = [])
     extract($attributes);
    
     require base_path('views/' . $path);
-}
-
-function abort($code = 404) 
-{
-    http_response_code($code);
-
-    require base_path("views/{$code}.php");
-
-    die();
 }
 
 function redirect($path)

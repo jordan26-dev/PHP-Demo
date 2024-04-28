@@ -67,8 +67,18 @@ class Router {
         }
 
         // if the uri doesn't exist in the routs array
-        abort();
+        $this->abort();
     }
+
+    function abort($code = 404) 
+    {
+        http_response_code($code);
+
+        require base_path("views/{$code}.php");
+
+        die();
+    }
+
 
     public function previousUrl()
     {

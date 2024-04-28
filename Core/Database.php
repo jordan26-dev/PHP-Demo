@@ -46,7 +46,7 @@ class Database {
         
         if(! $result)
         {
-            abort();
+            (new Router)->abort();
         }
 
         return $result;
